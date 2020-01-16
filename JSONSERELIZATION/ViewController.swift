@@ -25,7 +25,7 @@ struct RegisterServiceProvider: Decodable {
         phone = json["phone"] as? String ?? ""
         confirm_password = json["confirm_password"] as? String ?? ""
         
-    }
+    }  //can be commented out so long the structure is known
 }
 
 class ViewController: UIViewController {
@@ -48,12 +48,17 @@ class ViewController: UIViewController {
 //            //===converting it to string====
 //            let dataAsString = String(data: data, encoding: .utf8)
 //            print(dataAsString)
-            //====json serialisation===
-            do {
-                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] else { return }
-                //print(json)
-                let ServiceProvider = RegisterServiceProvider(json: json)
-                print(ServiceProvider.name)
+            
+//            //====json serialisation===
+        do {
+//                ////=========swift 2/3=====
+//                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] else { return }
+//                //print(json)
+//                let ServiceProvider = RegisterServiceProvider(json: json)
+//                print(ServiceProvider.name)
+            
+            //========swift 4============
+            let serviceProvider = try JSONDecoder().decode(RegisterServiceProvider.self, from: data)
                 
             } catch let jsonErr {
                 
