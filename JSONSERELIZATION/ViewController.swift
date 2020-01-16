@@ -15,7 +15,7 @@ struct RegisterServiceProvider: Decodable {
     let email: String
     let password: String
     let phone: String
-    let confirm_password: String
+    let confirm_password: String //incase of some missing values, make the property optionals, eg, let name: String?
     
     //===creating constructor using init=====
     init(json: [String: Any]) {
