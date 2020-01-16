@@ -8,7 +8,9 @@
 
 import UIKit
 //=====model object that reflects what the json object is======
-struct RegisterServiceProvider {
+
+//conforming model object to decodable protocol
+struct RegisterServiceProvider: Decodable {
     let name: String
     let email: String
     let password: String
